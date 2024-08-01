@@ -19,7 +19,7 @@ function App() {
 
   const fetchData = async () => {
     try {
-      const response = await axios.get("http://localhost:5000/api/data/all");
+      const response = await axios.get("https://the-it-studio-assignment-backend.onrender.com/api/data/all");
       setData(response.data);
     } catch (error) {
       console.error("Error fetching data:", error);
@@ -36,13 +36,13 @@ function App() {
     try {
       if (isUpdating) {
         await axios.put(
-          `http://localhost:5000/api/data/update/${updateId}`,
+          `https://the-it-studio-assignment-backend.onrender.com/api/data/update/${updateId}`,
           form
         );
         setIsUpdating(false);
         setUpdateId(null);
       } else {
-        await axios.post("http://localhost:5000/api/data/add", form);
+        await axios.post("https://the-it-studio-assignment-backend.onrender.com/api/data/add", form);
       }
       fetchData();
       setForm({ name: "", phoneNumber: "", email: "", hobbies: "" });
@@ -53,7 +53,7 @@ function App() {
 
   const handleDelete = async (id) => {
     try {
-      await axios.delete(`http://localhost:5000/api/data/delete/${id}`);
+      await axios.delete(`https://the-it-studio-assignment-backend.onrender.com/api/data/delete/${id}`);
       fetchData();
     } catch (error) {
       console.error("Error deleting data:", error);
@@ -69,7 +69,7 @@ function App() {
   const handleSend = async () => {
     console.log(selectedRows);
     try {
-      await axios.post("http://localhost:5000/api/data/send", {
+      await axios.post("https://the-it-studio-assignment-backend.onrender.com/api/data/send", {
         ids: selectedRows,
       });
       alert("Email sent");
