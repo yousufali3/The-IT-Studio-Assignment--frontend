@@ -19,7 +19,7 @@ function App() {
 
   const fetchData = async () => {
     try {
-      const response = await axios.get("the-it-studio-assignment-backend.vercel.app/api/data/all");
+      const response = await axios.get("https://the-it-studio-assignment-backend.vercel.app/api/data/all");
       setData(response.data);
     } catch (error) {
       console.error("Error fetching data:", error);
@@ -36,13 +36,13 @@ function App() {
     try {
       if (isUpdating) {
         await axios.put(
-          `the-it-studio-assignment-backend.vercel.app/api/data/update/${updateId}`,
+          `https://the-it-studio-assignment-backend.vercel.app/api/data/update/${updateId}`,
           form
         );
         setIsUpdating(false);
         setUpdateId(null);
       } else {
-        await axios.post("the-it-studio-assignment-backend.vercel.app/api/data/add", form);
+        await axios.post("https://the-it-studio-assignment-backend.vercel.app/api/data/add", form);
       }
       fetchData();
       setForm({ name: "", phoneNumber: "", email: "", hobbies: "" });
@@ -53,7 +53,7 @@ function App() {
 
   const handleDelete = async (id) => {
     try {
-      await axios.delete(`the-it-studio-assignment-backend.vercel.app/api/data/delete/${id}`);
+      await axios.delete(`https://the-it-studio-assignment-backend.vercel.app/api/data/delete/${id}`);
       fetchData();
     } catch (error) {
       console.error("Error deleting data:", error);
@@ -69,7 +69,7 @@ function App() {
   const handleSend = async () => {
     console.log(selectedRows);
     try {
-      await axios.post("the-it-studio-assignment-backend.vercel.app/api/data/send", {
+      await axios.post("https://the-it-studio-assignment-backend.vercel.app/api/data/send", {
         ids: selectedRows,
       });
       alert("Email sent");
